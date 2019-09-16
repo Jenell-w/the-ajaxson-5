@@ -10,7 +10,8 @@
 
         <form>
             <label>What kind of Jackson 5 related gif do you want?</label>
-            <input v-model="searchQuery" name="searchQuery" type="text"/>
+            <input v-bind:value="searchQuery" v-on:input="searchQuery = $event.target.value"
+            name="search-Query" type="text">
             <!--
                 TODO
                 Use some Vue.js magic to keep the input above in sync
@@ -30,7 +31,7 @@
 
         <img id="gif" v-bind:src="imgSrc" v-if="imgSrc"/>
         <div id="loading-mess">
-            <p v-if="loading = true">Your giphy is loading...try to be patient</p>
+            <p v-if="loading = true">{{ loadingMessage }}</p>
         </div>
         <!-- TODO show the user a "Loading..." message if we're currently loading
             -- my Question -

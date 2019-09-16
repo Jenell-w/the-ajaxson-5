@@ -12,7 +12,7 @@ var ajaxson5 = new Vue({
     methods: {
         fetchGif: function() {
             // get the user's input text from the DOM
-            var searchQuery = ajaxson5.searchQuery;   // TODO should be e.g. "dance"
+            var searchQuery = tagValue   // TODO should be e.g. "dance"
 //my Qs - something with this variable and Vue is not working.  
             // configure a few parameters to attach to our request
             var api_key = "dc6zaTOxFJmzC";
@@ -28,10 +28,12 @@ var ajaxson5 = new Vue({
                     console.log(results);
                     
                     this.searchQuery = response.results;
+                    
                     let imgSrc = data.image_url;
+                    console.log("did it work?", imgSrc);
                     return imgSrc;
            // TODO // 1. set the imgSrc value in our data to the GIF's image_url inside results
-                    
+                
                     // 2. clear the error message and loading state (since our request just succeede)
                 })
                 .catch(err => {
@@ -40,10 +42,16 @@ var ajaxson5 = new Vue({
                     this.loading = false;
                     this.errorMessage = 'Sorry, could not load GIF. Try again!';
                 });
-            ajaxson5.loading = true; //does a function need to be written in order for this to work?
+                    
+            },   
+        loadingTrue: function () {
+                this.loading = true;
+                this.errorMessage = "Giphy loading" 
+                    //this.loadingMessage = 'Your giphy is loading... please be patient!'
+                    //does a function need to be written in order for above to work?
 
 
-            },    // TODO We've just made a request, so this is a good time to
+            }   // TODO We've just made a request, so this is a good time to
             // set "loading = true"
 
 
