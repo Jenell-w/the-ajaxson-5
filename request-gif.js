@@ -3,8 +3,9 @@ var ajaxson5 = new Vue({
     el: '#mount-point',
     data: function () {
         return {
-            tagValue: null,
+            tagValue: "",
             errorMessage: null,
+            loadingMessage: null,
             loading: false,
             imgSrc: null,
         };
@@ -12,7 +13,7 @@ var ajaxson5 = new Vue({
     methods: {
         fetchGif: function() {
             // get the user's input text from the DOM
-            var searchQuery = tagValue   // TODO should be e.g. "dance"
+            //var searchQuery = tagValue   // TODO should be e.g. "dance"
 //my Qs - something with this variable and Vue is not working.  
             // configure a few parameters to attach to our request
             var api_key = "dc6zaTOxFJmzC";
@@ -27,11 +28,11 @@ var ajaxson5 = new Vue({
                     console.log("we received a response!");
                     console.log(results);
                     
-                    this.searchQuery = response.results;
+                    this.tagValue = response.results;
                     
-                    let imgSrc = data.image_url;
-                    console.log("did it work?", imgSrc);
-                    return imgSrc;
+                    this.imgSrc = data.image_url;
+                    console.log("did it work?");
+                return this.imgSrc;
            // TODO // 1. set the imgSrc value in our data to the GIF's image_url inside results
                 
                     // 2. clear the error message and loading state (since our request just succeede)
@@ -41,17 +42,16 @@ var ajaxson5 = new Vue({
 
                     this.loading = false;
                     this.errorMessage = 'Sorry, could not load GIF. Try again!';
-                });
+
                     
-            },   
-        loadingTrue: function () {
+                });
                 this.loading = true;
-                this.errorMessage = "Giphy loading" 
-                    //this.loadingMessage = 'Your giphy is loading... please be patient!'
-                    //does a function need to be written in order for above to work?
+                this.errorMessage = 'Giphy loading';  
+            },   
+        
+                 
 
-
-            }   // TODO We've just made a request, so this is a good time to
+              // TODO We've just made a request, so this is a good time to
             // set "loading = true"
 
 
