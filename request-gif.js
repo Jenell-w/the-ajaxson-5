@@ -3,21 +3,25 @@ var ajaxson5 = new Vue({
     el: '#mount-point',
     data: function () {
         return {
-            tagValue: "",
+            tagValue: "jackson 5",
             errorMessage: null,
             loadingMessage: null,
             loading: false,
             imgSrc: null,
+            inputData: ""
         };
     },
     methods: {
         fetchGif: function() {
             // get the user's input text from the DOM
-            //var searchQuery = tagValue   // TODO should be e.g. "dance"
+            var searchQuery = this.inputData;   // TODO should be e.g. "dance"
 //my Qs - something with this variable and Vue is not working.  
             // configure a few parameters to attach to our request
             var api_key = "dc6zaTOxFJmzC";
-            var tag = "jackson 5"; // TODO should be e.g. "jackson 5 dance"
+            var tag = this.tagValue + ' ' + this.inputData;
+
+            this.loading = true;
+            this.loadingMessage = "Loading your giphy...be patient!";
 
             // TODO what do we want this URL to be?
             fetch(`https://api.giphy.com/v1/gifs/random?api_key=${api_key}&tag=${tag}`)
@@ -27,12 +31,12 @@ var ajaxson5 = new Vue({
 
                     console.log("we received a response!");
                     console.log(results);
+                    this.loading = false;
+                    //this.tagValue = response.results;
                     
-                    this.tagValue = response.results;
-                    
-                    this.imgSrc = data.image_url;
-                    console.log("did it work?");
-                return this.imgSrc;
+                    this.imgSrc = response.data.image_url;
+                
+                    return this.imgSrc;
            // TODO // 1. set the imgSrc value in our data to the GIF's image_url inside results
                 
                     // 2. clear the error message and loading state (since our request just succeede)

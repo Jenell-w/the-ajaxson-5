@@ -1,0 +1,19 @@
+{
+  "name": "the-ajaxson-5",
+  "version": "1.0.0",
+  "description": "One of the classic problems in computer science is the question of how to optimally implement a web page that displays GIFs of the Jackson 5. Today you'll take a stab at it.",
+  "main": "request-gif.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jenell-w/the-ajaxson-5.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jenell-w/the-ajaxson-5/issues"
+  },
+  "homepage": "https://github.com/Jenell-w/the-ajaxson-5#readme"
+}
