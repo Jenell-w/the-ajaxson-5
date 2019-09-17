@@ -10,8 +10,8 @@
 
         <form>
             <label>What kind of Jackson 5 related gif do you want?</label>
-            <input v-model="tagValue"
-            name="tagValue" type="text">
+            <input v-model="inputData"
+            name="tag" type="text">
             <!--
                 TODO
                 Use some Vue.js magic to keep the input above in sync
@@ -30,8 +30,9 @@
         </form>
 
         <img id="gif" v-bind:src="imgSrc" v-if="imgSrc"/>
-        <div id="loading-mess">
-            <p v-if="loading === true">{{ loadingMessage }}</p>
+        <div id="loading-message">
+            <p v-if="loading">
+                {{ loadingMessage }}</p>
         </div>
         <!-- TODO show the user a "Loading..." message if we're currently loading
             -- my Question -
